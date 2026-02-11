@@ -5,25 +5,21 @@ import Header from '../components/Header';
 import ExhibitSection from '../components/ExhibitSection';
 import Footer from '../components/Footer';
 
-export default function HomePage() {
-  const [hasScrolled, setHasScrolled] = useState(false);
-
+export default function HomePage({ isCoverDismissed, setIsCoverDismissed }) {
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setHasScrolled(true);
-      } else {
-        setHasScrolled(false);
+      if (window.scrollY > 50 && !isCoverDismissed) {
+        setIsCoverDismissed(true);
       }
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [isCoverDismissed, setIsCoverDismissed]);
 
   return (
     <div className="bg-white text-black font-sans selection:bg-black selection:text-white">
       
-      <CoverScreen hasScrolled={hasScrolled} />
+      <CoverScreen isDismissed={isCoverDismissed} />
 
       <Navigation />
 

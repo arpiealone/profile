@@ -4,7 +4,7 @@ import ArtBadge from './ArtBadge';
 
 const Header = () => {
   return (
-    <header className="min-h-[70vh] sm:min-h-[80vh] flex items-end pb-16 sm:pb-24 md:pb-32 px-4 sm:px-6">
+    <header className="pt-32 sm:pt-40 md:pt-48 pb-16 sm:pb-24 md:pb-32 px-4 sm:px-6">
       <div className="container mx-auto">
         <div className="max-w-4xl">
           <ArtBadge>Archive Volume</ArtBadge>

@@ -45,7 +45,7 @@ export default function HomePage({ isCoverDismissed, setIsCoverDismissed }) {
             level="xi"
             year="24/25"
             title="The Vibrant Pulse"
-            curator="Ibu Lolita Bestari, S.T."
+            curator="Ibu Lolita Bestari, S.Kom."
             description="Tahun paling seru dan paling pusing mikirin laporan PKL!, Tapi di tahun inilah kita berkembang."
           />
         </div>

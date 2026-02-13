@@ -1,14 +1,13 @@
 import { motion } from "framer-motion";
-import painting1 from "../assets/gallery/class-x/naik_kelas.jpeg";
-import painting2 from "../assets/gallery/class-xi/juara_1_lomba.jpeg";
-import painting3 from "../assets/gallery/class-xii/foto_kelulusan.jpeg";
+import k1 from "../assets/gallery/class-xii/K1.JPG";
+import k2 from "../assets/gallery/class-xii/K2.JPG";
+import k3 from "../assets/gallery/class-xii/K3.JPG";
+import k4 from "../assets/gallery/class-xii/K4.JPG";
+import k5 from "../assets/gallery/class-xii/K5.JPG";
+import k6 from "../assets/gallery/class-xii/K6.JPG";
 
 const ClassicGalleryBackground = () => {
-  const paintings = [
-    painting1,
-    painting2,
-    painting3
-  ];
+  const photos = [k1, k2, k3, k4, k5, k6];
 
   return (
     <div className="fixed inset-0 z-[-1] overflow-hidden bg-[#e6dcc6]">
@@ -53,33 +52,27 @@ const ClassicGalleryBackground = () => {
       <div className="absolute inset-0 z-10 pointer-events-none mix-blend-multiply bg-[radial-gradient(circle,transparent_40%,#8b7355_100%)] opacity-40" />
       <div className="absolute inset-0 z-10 pointer-events-none opacity-20 mix-blend-overlay bg-[url('https://www.transparenttextures.com/patterns/white-paper.png')]" />
 
-      {/* 3. Floating Paintings (Ken Burns Effect) */}
-      <div className="absolute inset-0 z-20 flex items-center justify-center opacity-30 pb-32">
-        <div className="flex gap-8 p-8 rotate-[-5deg]">
-          {paintings.map((url, i) => (
-            <motion.div
-              key={i}
-              animate={{ 
-                scale: [1, 1.05, 1],
-                y: [0, -15, 0],
-                rotate: [0, 1, -1, 0]
-              }}
-              transition={{ 
-                duration: 15 + i * 3, 
-                repeat: Infinity, 
-                ease: "easeInOut",
-                delay: i * 2,
-              }}
-              className="w-[300px] h-[450px] flex-shrink-0 grayscale-[0.2] sepia-[0.4] shadow-[10px_10px_30px_rgba(0,0,0,0.5)] bg-white p-4"
-            >
-              <img 
-                src={url} 
-                alt="Classic Art" 
-                className="w-full h-full object-cover shadow-inner filter contrast-125" 
-              />
-            </motion.div>
-          ))}
-        </div>
+      {/* 3. Photo Frame Grid */}
+      <div className="absolute inset-0 z-20 flex items-center justify-center overflow-y-auto pt-24 pb-12 sm:pb-0 sm:pt-0">
+         <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-6 p-4 max-w-6xl mx-auto w-full opacity-40">
+            {photos.map((src, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ 
+                  duration: 1, 
+                  delay: i * 0.2,
+                  ease: "easeOut"
+                }}
+                className="aspect-[3/4] p-2 bg-white shadow-lg rotate-1 hover:rotate-0 transition-transform duration-500"
+              >
+                <div className="w-full h-full overflow-hidden border border-gray-100 grayscale-[0.3] sepia-[0.3]">
+                  <img src={src} alt={`Memory ${i+1}`} className="w-full h-full object-cover" />
+                </div>
+              </motion.div>
+            ))}
+         </div>
       </div>
     </div>
   );

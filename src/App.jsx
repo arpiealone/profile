@@ -8,13 +8,11 @@ import GalleryPage from './pages/GalleryPage';
 import ScrollToTop from './components/ScrollToTop';
 
 export default function App() {
-  const [isCoverDismissed, setIsCoverDismissed] = useState(false);
-
   return (
     <>
       <ScrollToTop />
       <Routes>
-        <Route path="/" element={<HomePage isCoverDismissed={isCoverDismissed} setIsCoverDismissed={setIsCoverDismissed} />} />
+        <Route path="/" element={<HomePage />} />
         <Route path="/gallery/:classLevel" element={<GalleryPage />} />
       </Routes>
     </>

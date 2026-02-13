@@ -4,6 +4,7 @@ import Navigation from '../components/Navigation';
 import Header from '../components/Header';
 import ExhibitSection from '../components/ExhibitSection';
 import Footer from '../components/Footer';
+import Background from '../components/Background';
 
 export default function HomePage({ isCoverDismissed, setIsCoverDismissed }) {
   useEffect(() => {
@@ -17,7 +18,9 @@ export default function HomePage({ isCoverDismissed, setIsCoverDismissed }) {
   }, [isCoverDismissed, setIsCoverDismissed]);
 
   return (
-    <div className="bg-white text-black font-sans selection:bg-black selection:text-white">
+    <div className="relative min-h-screen text-black font-sans selection:bg-black selection:text-white">
+      
+      <Background />
       
       <CoverScreen isDismissed={isCoverDismissed} />
 

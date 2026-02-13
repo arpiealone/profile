@@ -1,13 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Navigation from '../components/Navigation';
 import Header from '../components/Header';
 import ExhibitSection from '../components/ExhibitSection';
 import Footer from '../components/Footer';
 import Background from '../components/Background';
 import MemberSection from '../components/MemberSection';
+import CoverScreen from '../components/CoverScreen';
 
 export default function HomePage() {
   const [currentPage, setCurrentPage] = useState('home');
+  const [isCoverDismissed, setIsCoverDismissed] = useState(false);
+  const homeContainerRef = useRef(null);
+
+  useEffect(() => {
+    const container = homeContainerRef.current;
+    if (!container) return;
+
+    const handleScroll = () => {
+      if (container.scrollTop > 50 && !isCoverDismissed) {
+        setIsCoverDismissed(true);
+      }
+    };
+
+    container.addEventListener('scroll', handleScroll);
+    return () => container.removeEventListener('scroll', handleScroll);
+  }, [isCoverDismissed]);
 
   return (
     <div className="relative w-full h-screen overflow-hidden text-black font-sans selection:bg-black selection:text-white">
@@ -19,9 +36,12 @@ export default function HomePage() {
       <div className="relative w-full h-full overflow-hidden">
         
         <Background />
+        
+        <CoverScreen isDismissed={isCoverDismissed} />
 
         {/* HOME SECTION */}
         <section 
+          ref={homeContainerRef}
           className={`absolute inset-0 w-full h-full overflow-y-auto scroll-smooth bg-transparent transition-all duration-[1200ms] ease-[cubic-bezier(0.85,0,0.15,1)] ${
             currentPage === 'home' 
               ? 'translate-x-0 scale-100 opacity-100' 

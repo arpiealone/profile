@@ -3,7 +3,7 @@ import { ChevronDown } from 'lucide-react';
 
 const CoverScreen = ({ isDismissed }) => {
   return (
-    <div className={`fixed inset-0 z-[100] flex items-center justify-center bg-black transition-all duration-1000 ${isDismissed ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
+    <div className={`fixed inset-0 z-[100] flex items-center justify-center bg-black transition-all duration-1000 pointer-events-none ${isDismissed ? 'opacity-0' : 'opacity-100'}`}>
       <div className="text-center">
         <h1 className="text-[15vw] sm:text-[12vw] md:text-[10vw] font-serif italic text-white mb-4 sm:mb-8">
           RPL 1
